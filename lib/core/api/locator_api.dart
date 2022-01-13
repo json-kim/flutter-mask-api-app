@@ -1,9 +1,12 @@
 import 'package:geolocator/geolocator.dart';
 
 class LocatorApi {
-  LocatorApi();
+  LocatorApi._();
 
-  Future<bool> checkPermission() async {
+  static final LocatorApi _instance = LocatorApi._();
+  static LocatorApi get instance => _instance;
+
+  Future<bool> _checkPermission() async {
     final serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
       return Future.error('Location services are disabled');
@@ -26,7 +29,12 @@ class LocatorApi {
     return true;
   }
 
-  Future<Position> getCurrentPosition() async {
+  Future<Position> getCurrentLocation() async {
+    final isPermission = await _checkPermission();
+    if (!isPermission) {
+      return Future.error('error');
+    }
+
     return await Geolocator.getCurrentPosition();
   }
 }

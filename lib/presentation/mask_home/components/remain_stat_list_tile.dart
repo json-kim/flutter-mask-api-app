@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mask/domain/model/store.dart';
+import 'package:flutter_mask/domain/use_case/store/store_data.dart';
 
 class RemainStatListTile extends StatelessWidget {
-  final Store store;
-  void Function()? onTap;
+  final StoreData store;
+  final void Function()? onTap;
 
-  RemainStatListTile({this.onTap, required this.store, Key? key})
+  const RemainStatListTile({this.onTap, required this.store, Key? key})
       : super(key: key);
 
   @override
@@ -13,7 +13,13 @@ class RemainStatListTile extends StatelessWidget {
     return ListTile(
       onTap: onTap,
       title: Text(store.name),
-      subtitle: Text(store.addr),
+      subtitle: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(store.addr),
+          Text(store.km.toStringAsFixed(1) + 'km'),
+        ],
+      ),
       trailing: _buildRemainStatWidget(context, store.remainStat),
     );
   }

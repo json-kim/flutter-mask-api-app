@@ -5,7 +5,7 @@ void main() {
   test('마스크 api 테스트 합니다.', () async {
     final api = MaskApi();
 
-    final stores = await api.fetch();
+    final stores = await api.fetch(1, 2);
 
     expect(stores.length, 222);
 

@@ -30,8 +30,7 @@ class MaskHomeScreen extends StatelessWidget {
                   .map(
                     (store) => RemainStatListTile(
                         onTap: () {
-                          viewModel.openMap(
-                              store.lat as double, store.lng as double);
+                          viewModel.openMap(store);
                         },
                         store: store),
                   )

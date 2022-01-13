@@ -18,7 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$MaskHomeStateTearOff {
   const _$MaskHomeStateTearOff();
 
-  _MaskHomeState call({required List<Store> stores, required bool isLoading}) {
+  _MaskHomeState call(
+      {required List<StoreData> stores, required bool isLoading}) {
     return _MaskHomeState(
       stores: stores,
       isLoading: isLoading,
@@ -31,7 +32,7 @@ const $MaskHomeState = _$MaskHomeStateTearOff();
 
 /// @nodoc
 mixin _$MaskHomeState {
-  List<Store> get stores => throw _privateConstructorUsedError;
+  List<StoreData> get stores => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -44,7 +45,7 @@ abstract class $MaskHomeStateCopyWith<$Res> {
   factory $MaskHomeStateCopyWith(
           MaskHomeState value, $Res Function(MaskHomeState) then) =
       _$MaskHomeStateCopyWithImpl<$Res>;
-  $Res call({List<Store> stores, bool isLoading});
+  $Res call({List<StoreData> stores, bool isLoading});
 }
 
 /// @nodoc
@@ -65,7 +66,7 @@ class _$MaskHomeStateCopyWithImpl<$Res>
       stores: stores == freezed
           ? _value.stores
           : stores // ignore: cast_nullable_to_non_nullable
-              as List<Store>,
+              as List<StoreData>,
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -81,7 +82,7 @@ abstract class _$MaskHomeStateCopyWith<$Res>
           _MaskHomeState value, $Res Function(_MaskHomeState) then) =
       __$MaskHomeStateCopyWithImpl<$Res>;
   @override
-  $Res call({List<Store> stores, bool isLoading});
+  $Res call({List<StoreData> stores, bool isLoading});
 }
 
 /// @nodoc
@@ -104,7 +105,7 @@ class __$MaskHomeStateCopyWithImpl<$Res>
       stores: stores == freezed
           ? _value.stores
           : stores // ignore: cast_nullable_to_non_nullable
-              as List<Store>,
+              as List<StoreData>,
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -119,7 +120,7 @@ class _$_MaskHomeState implements _MaskHomeState {
   const _$_MaskHomeState({required this.stores, required this.isLoading});
 
   @override
-  final List<Store> stores;
+  final List<StoreData> stores;
   @override
   final bool isLoading;
 
@@ -151,11 +152,11 @@ class _$_MaskHomeState implements _MaskHomeState {
 
 abstract class _MaskHomeState implements MaskHomeState {
   const factory _MaskHomeState(
-      {required List<Store> stores,
+      {required List<StoreData> stores,
       required bool isLoading}) = _$_MaskHomeState;
 
   @override
-  List<Store> get stores;
+  List<StoreData> get stores;
   @override
   bool get isLoading;
   @override
