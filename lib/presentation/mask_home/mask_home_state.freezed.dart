@@ -19,7 +19,7 @@ class _$MaskHomeStateTearOff {
   const _$MaskHomeStateTearOff();
 
   _MaskHomeState call(
-      {required List<StoreData> stores, required bool isLoading}) {
+      {List<StoreData> stores = const [], bool isLoading = false}) {
     return _MaskHomeState(
       stores: stores,
       isLoading: isLoading,
@@ -117,10 +117,12 @@ class __$MaskHomeStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_MaskHomeState implements _MaskHomeState {
-  const _$_MaskHomeState({required this.stores, required this.isLoading});
+  const _$_MaskHomeState({this.stores = const [], this.isLoading = false});
 
+  @JsonKey()
   @override
   final List<StoreData> stores;
+  @JsonKey()
   @override
   final bool isLoading;
 
@@ -151,9 +153,8 @@ class _$_MaskHomeState implements _MaskHomeState {
 }
 
 abstract class _MaskHomeState implements MaskHomeState {
-  const factory _MaskHomeState(
-      {required List<StoreData> stores,
-      required bool isLoading}) = _$_MaskHomeState;
+  const factory _MaskHomeState({List<StoreData> stores, bool isLoading}) =
+      _$_MaskHomeState;
 
   @override
   List<StoreData> get stores;

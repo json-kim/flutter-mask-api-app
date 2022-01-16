@@ -6,7 +6,7 @@ part 'mask_home_state.freezed.dart';
 @freezed
 class MaskHomeState with _$MaskHomeState {
   const factory MaskHomeState({
-    required List<StoreData> stores,
-    required bool isLoading,
+    @Default([]) List<StoreData> stores,
+    @Default(false) bool isLoading,
   }) = _MaskHomeState;
 }

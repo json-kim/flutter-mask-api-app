@@ -1,20 +1,25 @@
 import 'dart:convert';
 
-import 'package:flutter_mask/data/util/mask_util.dart';
+import 'package:flutter_mask/core/result/result.dart';
+import 'package:flutter_mask/data/util/mask_api_util.dart';
 import 'package:http/http.dart' as http;
 
 class MaskApi {
-  Future<List> fetch(double lat, double lng) async {
+  Future<Result<List>> fetch(double lat, double lng) async {
     // lat, lng 로 url 만들기 => maskApiUrl
-    final uri = Uri.parse(maskApiUrl);
-    final result = await http.get(uri);
+    try {
+      final uri = Uri.parse(maskApiUrl);
+      final result = await http.get(uri);
 
-    if (result.statusCode == 200) {
-      final List jsonStore = jsonDecode(result.body)['stores'];
+      if (result.statusCode == 200) {
+        final List jsonStores = jsonDecode(result.body)['stores'];
 
-      return jsonStore;
-    } else {
-      throw Exception('네트워크 에러');
+        return Result.success(jsonStores);
+      } else {
+        return Result.error('$runtimeType : 네트워크 에러 ${result.statusCode}');
+      }
+    } catch (error) {
+      return Result.error('$runtimeType : 네트워크 에러 $error');
     }
   }
 }

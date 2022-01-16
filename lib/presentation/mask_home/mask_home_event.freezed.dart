@@ -22,8 +22,10 @@ class _$MaskHomeEventTearOff {
     return const Load();
   }
 
-  Refresh refresh() {
-    return const Refresh();
+  OpenMap openMap(StoreData store) {
+    return OpenMap(
+      store,
+    );
   }
 }
 
@@ -35,38 +37,38 @@ mixin _$MaskHomeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() load,
-    required TResult Function() refresh,
+    required TResult Function(StoreData store) openMap,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? load,
-    TResult Function()? refresh,
+    TResult Function(StoreData store)? openMap,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? load,
-    TResult Function()? refresh,
+    TResult Function(StoreData store)? openMap,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Load value) load,
-    required TResult Function(Refresh value) refresh,
+    required TResult Function(OpenMap value) openMap,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Load value)? load,
-    TResult Function(Refresh value)? refresh,
+    TResult Function(OpenMap value)? openMap,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Load value)? load,
-    TResult Function(Refresh value)? refresh,
+    TResult Function(OpenMap value)? openMap,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -128,7 +130,7 @@ class _$Load implements Load {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() load,
-    required TResult Function() refresh,
+    required TResult Function(StoreData store) openMap,
   }) {
     return load();
   }
@@ -137,7 +139,7 @@ class _$Load implements Load {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? load,
-    TResult Function()? refresh,
+    TResult Function(StoreData store)? openMap,
   }) {
     return load?.call();
   }
@@ -146,7 +148,7 @@ class _$Load implements Load {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? load,
-    TResult Function()? refresh,
+    TResult Function(StoreData store)? openMap,
     required TResult orElse(),
   }) {
     if (load != null) {
@@ -159,7 +161,7 @@ class _$Load implements Load {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Load value) load,
-    required TResult Function(Refresh value) refresh,
+    required TResult Function(OpenMap value) openMap,
   }) {
     return load(this);
   }
@@ -168,7 +170,7 @@ class _$Load implements Load {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Load value)? load,
-    TResult Function(Refresh value)? refresh,
+    TResult Function(OpenMap value)? openMap,
   }) {
     return load?.call(this);
   }
@@ -177,7 +179,7 @@ class _$Load implements Load {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Load value)? load,
-    TResult Function(Refresh value)? refresh,
+    TResult Function(OpenMap value)? openMap,
     required TResult orElse(),
   }) {
     if (load != null) {
@@ -192,67 +194,91 @@ abstract class Load implements MaskHomeEvent {
 }
 
 /// @nodoc
-abstract class $RefreshCopyWith<$Res> {
-  factory $RefreshCopyWith(Refresh value, $Res Function(Refresh) then) =
-      _$RefreshCopyWithImpl<$Res>;
+abstract class $OpenMapCopyWith<$Res> {
+  factory $OpenMapCopyWith(OpenMap value, $Res Function(OpenMap) then) =
+      _$OpenMapCopyWithImpl<$Res>;
+  $Res call({StoreData store});
 }
 
 /// @nodoc
-class _$RefreshCopyWithImpl<$Res> extends _$MaskHomeEventCopyWithImpl<$Res>
-    implements $RefreshCopyWith<$Res> {
-  _$RefreshCopyWithImpl(Refresh _value, $Res Function(Refresh) _then)
-      : super(_value, (v) => _then(v as Refresh));
+class _$OpenMapCopyWithImpl<$Res> extends _$MaskHomeEventCopyWithImpl<$Res>
+    implements $OpenMapCopyWith<$Res> {
+  _$OpenMapCopyWithImpl(OpenMap _value, $Res Function(OpenMap) _then)
+      : super(_value, (v) => _then(v as OpenMap));
 
   @override
-  Refresh get _value => super._value as Refresh;
+  OpenMap get _value => super._value as OpenMap;
+
+  @override
+  $Res call({
+    Object? store = freezed,
+  }) {
+    return _then(OpenMap(
+      store == freezed
+          ? _value.store
+          : store // ignore: cast_nullable_to_non_nullable
+              as StoreData,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$Refresh implements Refresh {
-  const _$Refresh();
+class _$OpenMap implements OpenMap {
+  const _$OpenMap(this.store);
+
+  @override
+  final StoreData store;
 
   @override
   String toString() {
-    return 'MaskHomeEvent.refresh()';
+    return 'MaskHomeEvent.openMap(store: $store)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is Refresh);
+        (other.runtimeType == runtimeType &&
+            other is OpenMap &&
+            const DeepCollectionEquality().equals(other.store, store));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(store));
+
+  @JsonKey(ignore: true)
+  @override
+  $OpenMapCopyWith<OpenMap> get copyWith =>
+      _$OpenMapCopyWithImpl<OpenMap>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() load,
-    required TResult Function() refresh,
+    required TResult Function(StoreData store) openMap,
   }) {
-    return refresh();
+    return openMap(store);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? load,
-    TResult Function()? refresh,
+    TResult Function(StoreData store)? openMap,
   }) {
-    return refresh?.call();
+    return openMap?.call(store);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? load,
-    TResult Function()? refresh,
+    TResult Function(StoreData store)? openMap,
     required TResult orElse(),
   }) {
-    if (refresh != null) {
-      return refresh();
+    if (openMap != null) {
+      return openMap(store);
     }
     return orElse();
   }
@@ -261,34 +287,38 @@ class _$Refresh implements Refresh {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Load value) load,
-    required TResult Function(Refresh value) refresh,
+    required TResult Function(OpenMap value) openMap,
   }) {
-    return refresh(this);
+    return openMap(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Load value)? load,
-    TResult Function(Refresh value)? refresh,
+    TResult Function(OpenMap value)? openMap,
   }) {
-    return refresh?.call(this);
+    return openMap?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Load value)? load,
-    TResult Function(Refresh value)? refresh,
+    TResult Function(OpenMap value)? openMap,
     required TResult orElse(),
   }) {
-    if (refresh != null) {
-      return refresh(this);
+    if (openMap != null) {
+      return openMap(this);
     }
     return orElse();
   }
 }
 
-abstract class Refresh implements MaskHomeEvent {
-  const factory Refresh() = _$Refresh;
+abstract class OpenMap implements MaskHomeEvent {
+  const factory OpenMap(StoreData store) = _$OpenMap;
+
+  StoreData get store;
+  @JsonKey(ignore: true)
+  $OpenMapCopyWith<OpenMap> get copyWith => throw _privateConstructorUsedError;
 }
